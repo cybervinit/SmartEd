@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * Created by Vinit on 2017-01-07.
  */
 
-public class CourseViewAdapter extends ArrayAdapter<Course> {
+public class CourseViewAdapter extends ArrayAdapter<String> {
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<Course> mData;
+    private ArrayList<String> mData;
 
-    public CourseViewAdapter(Context context, ArrayList<Course> items) {
+    public CourseViewAdapter(Context context, ArrayList<String> items) {
         super(context, R.layout.student_course_card_layout, items);
         mContext = context;
         mData = items;
@@ -35,7 +35,7 @@ public class CourseViewAdapter extends ArrayAdapter<Course> {
     }
 
     @Override
-    public Course getItem(int i) {
+    public String getItem(int i) {
         return mData.get(i);
     }
 
@@ -51,8 +51,14 @@ public class CourseViewAdapter extends ArrayAdapter<Course> {
             View elementView = mInflater.inflate(R.layout.student_course_card_layout, parent, false);
             TextView courseName = (TextView) elementView.findViewById(R.id.course_name_textview);
             TextView courseId = (TextView) elementView.findViewById(R.id.course_id_textview);
-            courseName.setText(mData.get(position).getCourseName());
-            courseId.setText(mData.get(position).getCourseID());
+            courseId.setText("CourseID Goes Here");
+            courseName.setText("CourseName Goes Here");
+
+            // Make call to Firebase using courseID and username
+            // <<<FIREBASE CALL>>>
+
+            //courseName.setText(mData.get(position).getCourseName());
+            //courseId.setText(mData.get(position).getCourseID());
             return elementView;
         }
 

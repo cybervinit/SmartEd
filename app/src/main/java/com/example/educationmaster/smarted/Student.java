@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Student {
     private String name;
-    private ArrayList<Course> courseList;
+    private ArrayList<String> courseIdList;
     private int studentID;
     private String password;
     private String username;
@@ -24,8 +24,12 @@ public class Student {
         return name;
     }
 
-    public ArrayList<Course> getCourseList() {
-        return courseList;
+    public ArrayList<String> getCourseList() {
+        return courseIdList;
+    }
+
+    public String getCourseId(int position) {
+        return courseIdList.get(position);
     }
 
     public int getStudentID() {

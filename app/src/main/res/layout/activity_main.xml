@@ -51,16 +51,6 @@
         android:layout_centerVertical="true"
         android:layout_centerInParent="true"/>
 
-    <ToggleButton
-        android:text="Toggle User"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toggleUserType"
-        android:textOff="Student"
-        android:textOn="Admin"
-        android:layout_below="@+id/btnSignUp"
-        android:layout_alignStart="@+id/btnSignUp" />
-
     <Button
         android:text="Sign Up"
         android:layout_width="match_parent"
@@ -78,22 +68,24 @@
         android:layout_centerHorizontal="true">
 
         <RadioButton
-            android:text="Admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rbStudent"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/rbAdmin"
-            android:layout_weight="1" />
-
-        <RadioButton
             android:text="Student"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rbStudent"
             android:layout_below="@+id/toggleUserType"
             android:layout_centerHorizontal="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:checked="true" />
+
+        <RadioButton
+            android:text="Admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbStudent"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rbAdmin"
+            android:layout_weight="1"
+            android:checked="false" />
     </RadioGroup>
 
 
