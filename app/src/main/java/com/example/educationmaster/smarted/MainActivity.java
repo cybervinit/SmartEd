@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private static final String USER_TYPE_KEY = "userType";
     private static final String USERNAME_KEY = "username";
     private static final int USER_STUDENT = 0;
     private static final int USER_ADMIN = 1;
-
     private Button mSignUpBtn;
     private Button mLoginBtn;
     private int selectedId;
@@ -81,12 +82,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // START THE LOGIN  PROCESS
-                startActivity(new Intent(MainActivity.this, StudentDashboard.class).putExtra(USERNAME_KEY, "dham"));
+                new NetTask().readStudent("america");
+                //startActivity(new Intent(MainActivity.this, StudentDashboard.class).putExtra(USERNAME_KEY, "dham"));
             }
+
+
         });
 
 
     }
+
+
 
 
 }
