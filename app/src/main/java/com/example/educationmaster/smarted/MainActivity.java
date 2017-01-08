@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
         mSignUpBtn = (Button) findViewById(R.id.btnSignUp);
         mLoginBtn = (Button) findViewById(R.id.btnLogin);
         mUserToggleBtn = (ToggleButton) findViewById(R.id.toggleUserType);
+
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rgMain);
+        RadioButton rbAdmin = (RadioButton) findViewById(R.id.rbAdmin);
+        RadioButton rbStudent = (RadioButton) findViewById(R.id.rbStudent);
+
+        final int selectedId = radioGroup.getCheckedRadioButtonId();
+
+
+        /*
+
+
         mUserToggleBtn.setTextOff("Student");
         mUserToggleBtn.setTextOn("Admin");
 
@@ -37,12 +50,17 @@ public class MainActivity extends AppCompatActivity {
                     userType = 0;
                 }
             }
-        });
+        });*/
 
         mSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra("userType", userType));
+                if (selectedId == 0) {
+                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra("userType", selectedId));
+                }
+                else {
+                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra("userType", 1));
+                }
             }
         });
 

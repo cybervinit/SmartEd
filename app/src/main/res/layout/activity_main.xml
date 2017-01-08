@@ -70,4 +70,31 @@
         android:layout_alignParentStart="true" />
 
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgMain"
+        android:layout_below="@+id/toggleUserType"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:text="Admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbStudent"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rbAdmin"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="Student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbStudent"
+            android:layout_below="@+id/toggleUserType"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+
 </RelativeLayout>
