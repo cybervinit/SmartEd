@@ -39,4 +39,6 @@ public class Student {
     public String getPassword() { return this.password;}
 
     public String getUsername() { return this.username;}
+
+    public ArrayList<String> getCourseIdList() { return this.courseIdList; }
 }
