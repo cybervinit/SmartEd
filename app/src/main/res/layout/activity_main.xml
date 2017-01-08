@@ -32,16 +32,6 @@
         android:layout_marginBottom="74dp"
         android:hint="Username" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_above="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/password_edittext"
-        android:hint="Password" />
-
     <Button
         android:text="Log In"
         android:layout_width="match_parent"
@@ -65,7 +55,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/rgMain"
         android:layout_below="@+id/btnSignUp"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp">
 
         <RadioButton
             android:text="Student"
@@ -87,6 +78,17 @@
             android:layout_weight="1"
             android:checked="false" />
     </RadioGroup>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_edittext"
+        android:hint="Password"
+        android:layout_above="@+id/btnLogin"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp" />
 
 
 </RelativeLayout>
