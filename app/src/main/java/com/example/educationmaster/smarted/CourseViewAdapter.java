@@ -41,7 +41,7 @@ public class CourseViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            View elementView = mInflater.inflate(R.layout.student_course_card_layout, viewGroup, false);
+            View elementView = mInflater.inflate(R.layout.student_course_card_layout, null, false);
             return elementView;
         }
 
