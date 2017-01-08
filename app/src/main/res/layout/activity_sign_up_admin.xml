@@ -64,6 +64,6 @@
             android:text="Submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnSubmitStudent" />
+            android:id="@+id/btnSubmitAdmin" />
     </LinearLayout>
 </RelativeLayout>

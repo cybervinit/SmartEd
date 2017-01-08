@@ -9,11 +9,12 @@ import java.util.ArrayList;
 public class Student {
     private String name;
     private ArrayList<String> courseIdList;
-    private int studentID;
+    private String studentID;
     private String password;
     private String username;
+    private String key;
 
-    public Student (String name, int studentID, String password, String username) {
+    public Student (String name, String studentID, String password, String username) {
         this.name = name;
         this.studentID = studentID;
         this.password = password;
@@ -32,7 +33,13 @@ public class Student {
         return courseIdList.get(position);
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return studentID;
     }
+
+    public String getPassword() { return this.password;}
+
+    public String getUsername() { return this.username;}
+
+    public String getKey() {return this.key;}
 }

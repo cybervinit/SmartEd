@@ -7,16 +7,30 @@ import java.util.ArrayList;
  */
 
 public class Admin {
+
+
     private String name;
+    private String password;
+    private String username;
 
     private ArrayList<Course> courseList;
 
-    public Admin(String name) {
+    public Admin(String name, String password, String username) {
         this.name = name;
+        this.password = password;
+        this.username = username;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public ArrayList<Course> getCourseList() {
