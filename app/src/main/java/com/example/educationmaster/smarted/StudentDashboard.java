@@ -23,7 +23,7 @@ public class StudentDashboard extends AppCompatActivity {
         mStudentCoursesListView = (ListView) findViewById(R.id.student_dashboard_listview);
         courseList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             courseList.add(new Course(String.valueOf(i), "Course"+String.valueOf(i)));
         }
 

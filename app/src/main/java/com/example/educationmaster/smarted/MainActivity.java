@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // START THE LOGIN  PROCESS
-                startActivity(new Intent(MainActivity.this, StudentDashboard.class));
+                startActivity(new Intent(MainActivity.this, StudentDashboard.class).putExtra(USERNAME_KEY, "dham"));
             }
         });
 

@@ -5,5 +5,62 @@
         android:text="Student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/student_signup_text" />
+        android:id="@+id/student_signup_text"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:ems="10"
+
+            android:id="@+id/editText"
+            android:hint="Name"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:id="@+id/editText2"
+            android:textAlignment="center"
+            android:hint="Username"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:id="@+id/editText3"
+            android:hint="Password" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:id="@+id/editText4"
+            android:hint="Student ID" />
+    </LinearLayout>
 </RelativeLayout>
+
