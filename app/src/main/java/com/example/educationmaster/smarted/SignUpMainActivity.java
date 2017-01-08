@@ -55,7 +55,7 @@ public class SignUpMainActivity extends AppCompatActivity {
                 ((EditText) findViewById(R.id.etPasswordStudent)).getText().toString(),
                 ((EditText) findViewById(R.id.etUsernameStudent)).getText().toString());
 
-        new NetTask(newStudent).executeAddNewStudent();
+        //new NetTask(newStudent).executeAddNewStudent();
 
     }
 
@@ -64,6 +64,6 @@ public class SignUpMainActivity extends AppCompatActivity {
                 ((EditText) findViewById(R.id.etPasswordAdmin)).getText().toString(),
                 ((EditText) findViewById(R.id.etUsernameAdmin)).getText().toString());
         //Log.d("STUDENT INFO:", newStudent.getName());
-        new NetTask(newAdmin).executeAdmin();
+        //new NetTask(newAdmin).executeAdmin();
     }
 }
