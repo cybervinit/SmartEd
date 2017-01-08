@@ -54,6 +54,7 @@ public class NetTask {
 
     public void readStudent(String username1) {
         Query myStudent = dbRef.equalTo("student-details/"+username1);
+        //myStudent.getRef().eq
 
         myStudent.addValueEventListener(new ValueEventListener() {
             @Override
