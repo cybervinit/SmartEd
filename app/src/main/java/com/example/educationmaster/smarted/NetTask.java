@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +44,7 @@ public class NetTask {
     }
 
     public void executeAddNewStudent() {
-        dbRef.child("student-details").push().setValue(mStudent);
+        dbRef.child("student-details").child(mStudent.getUsername()).setValue(mStudent);
 
     }
 
@@ -51,17 +52,14 @@ public class NetTask {
         dbRef.child("admin-details").push().setValue(mAdmin);
     }
 
-    public void readStudent() {
-        dbRef.child("student-details").addValueEventListener(new ValueEventListener() {
+    public void readStudent(String username1) {
+        Query myStudent = dbRef.equalTo("student-details/"+username1);
+
+        myStudent.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                /*GenericTypeIndicator<List<Object>> t = new GenericTypeIndicator<List<Object>>(){};
-                List<Object> studentListRetrieved = dataSnapshot.getValue(t);*/
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Log.d("TEST", child.getValue().toString());
-                    child.getValue();
-                }
-
+                Student s = dataSnapshot.getValue(Student.class);
+                Log.d("VINIT", s.getPassword());
             }
 
             @Override
@@ -69,6 +67,5 @@ public class NetTask {
 
             }
         });
-        //Query myStudent = dbRef.child("student-details").child()
     }
 }

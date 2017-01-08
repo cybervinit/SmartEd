@@ -12,7 +12,6 @@ public class Student {
     private String studentID;
     private String password;
     private String username;
-    private String key;
 
     public Student (String name, String studentID, String password, String username) {
         this.name = name;
@@ -40,6 +39,4 @@ public class Student {
     public String getPassword() { return this.password;}
 
     public String getUsername() { return this.username;}
-
-    public String getKey() {return this.key;}
 }
