@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
-        android:text="Student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/student_signup_text"
-        android:textSize="40sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,7 +17,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
 
-            android:id="@+id/editText"
+            android:id="@+id/etNameStudent"
             android:hint="Name"
             android:layout_gravity="center_horizontal" />
 
@@ -35,7 +27,7 @@
             android:ems="10"
             android:ellipsize="start"
             android:gravity="center_horizontal"
-            android:id="@+id/editText2"
+            android:id="@+id/etUsernameStudent"
             android:textAlignment="center"
             android:hint="Username"
             android:layout_gravity="center_horizontal" />
@@ -48,7 +40,7 @@
             android:ellipsize="start"
             android:gravity="center_horizontal"
             android:textAlignment="center"
-            android:id="@+id/editText3"
+            android:id="@+id/etPasswordStudent"
             android:hint="Password" />
 
         <EditText
@@ -59,8 +51,23 @@
             android:ellipsize="start"
             android:gravity="center_horizontal"
             android:textAlignment="center"
-            android:id="@+id/editText4"
+            android:id="@+id/etStudentNoStudent"
             android:hint="Student ID" />
+
+        <Button
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSubmitStudent" />
     </LinearLayout>
+
+    <TextView
+        android:text="Student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/student_signup_text"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
 
