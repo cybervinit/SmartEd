@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -16,21 +15,28 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
     private static final String STUDENT_DETAILS = "student-details/";
-    private static final String ADMIN_DETAILS = "admin-details/";
-    private static final String USER_TYPE_KEY = "userType";
     private static final String USERNAME_KEY = "username";
     private static final String PASSWORD_KEY = "password";
 
-    private static final int USER_STUDENT = 0;
-    private static final int USER_ADMIN = 1;
     private Button mSignUpBtn;
     private Button mLoginBtn;
-    private int selectedId;
-    private RadioGroup mRadioGroup;
     private EditText mUsernameEt;
     private EditText mPasswordEt;
+    private Retrofit retrofit = new Retrofit.Builder().baseUrl("https://smarteddb.firebaseio.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    private Api api = retrofit.create(Api.class);
+
+    Call<Student> post_call = api.setData("sushil", new Student("sushil", "2066", "_password", "_username"));
+
 
     private static final FirebaseDatabase mDB = FirebaseDatabase.getInstance();
     private static DatabaseReference dbRef = mDB.getReferenceFromUrl("https://smarteddb.firebaseio.com/");
@@ -46,61 +52,31 @@ public class MainActivity extends AppCompatActivity {
         mUsernameEt = (EditText) findViewById(R.id.username_edittext);
         mPasswordEt = (EditText) findViewById(R.id.password_edittext);
 
-        mRadioGroup = (RadioGroup) findViewById(R.id.rgMain);
-        RadioButton rbAdmin = (RadioButton) findViewById(R.id.rbAdmin);
-        rbAdmin.setId(R.id.rbAdmin);
-        RadioButton rbStudent = (RadioButton) findViewById(R.id.rbStudent);
-        rbStudent.setId(R.id.rbStudent);
-
-
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if (checkedId == R.id.rbAdmin) {
-                    selectedId = 1;
-                } else if (checkedId == R.id.rbStudent) {
-                    selectedId = 0;
-                }
-            }
-        });
 
 
         mSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("log call  is :", String.valueOf(selectedId));
-                if (selectedId == 0) {
-                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra(USER_TYPE_KEY, USER_STUDENT));
-                } else if (selectedId == 1) {
-                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra(USER_TYPE_KEY, USER_ADMIN));
-                }
+                startActivity(new Intent(MainActivity.this, SignUpMainActivity.class));
             }
         });
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> listOfParams = new ArrayList<String>();
-                listOfParams.add(USERNAME_KEY);
-                listOfParams.add(PASSWORD_KEY);
-                if (selectedId == 0) {
-                    String usernameString = mUsernameEt.getText().toString();
-                    String passwordString = mPasswordEt.getText().toString();
-                    String location = STUDENT_DETAILS+usernameString;
-                    new NetTask(location, listOfParams, 1, new AsyncPostExecute() {
-                        @Override
-                        public void OnPostExecuteMethod(ArrayList<Object> values) {
-                            String usernameString = mUsernameEt.getText().toString();
-                            String passwordString = mPasswordEt.getText().toString();
-                            Log.d("VINIT", (String) values.get(0));
-                            Log.d("VINIT", (String) values.get(1));
-                        }
-                    }).execute();
-                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra(USER_TYPE_KEY, USER_STUDENT));
-                } else if (selectedId == 1) {
-                    startActivity(new Intent(MainActivity.this, SignUpMainActivity.class).putExtra(USER_TYPE_KEY, USER_ADMIN));
-                }
-                //new NetTask2(STUDENT_DETAILS+"america", USERNAME_KEY).executeRead();
+                // Login Authentication HERE <><><><><>
+                //startActivity(new Intent(MainActivity.this, StudentDashboard.class));
+                post_call.enqueue(new Callback<Student>() {
+                    @Override
+                    public void onResponse(Call<Student> call, Response<Student> response) {
+                        mUsernameEt.setText(call+"<<>>"+response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Student> call, Throwable t) {
+                        mUsernameEt.setText("FAIL");
+                    }
+                });
             }
 
 
@@ -108,10 +84,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean isLoginSuccessful(String testUsername, String testPassword, String actualUsername, String actualPassword) {
-
-
-        return false;
-    }
 }
 

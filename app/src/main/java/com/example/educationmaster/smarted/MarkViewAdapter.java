@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * Created by Vinit on 2017-01-07.
  */
 
-public class CourseViewAdapter extends ArrayAdapter<String> {
+public class MarkViewAdapter extends ArrayAdapter<String> {
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList<String> mData;
 
-    public CourseViewAdapter(Context context, ArrayList<String> items) {
+    public MarkViewAdapter(Context context, ArrayList<String> items) {
         super(context, R.layout.student_course_card_layout, items);
         mContext = context;
         mData = items;
@@ -47,22 +47,19 @@ public class CourseViewAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        if (view == null) {
-            View elementView = mInflater.inflate(R.layout.student_course_card_layout, parent, false);
-            TextView courseName = (TextView) elementView.findViewById(R.id.course_name_textview);
-            TextView courseId = (TextView) elementView.findViewById(R.id.course_id_textview);
-            courseId.setText("CourseID Goes Here");
-            courseName.setText("CourseName Goes Here");
-
-            // Make call to Firebase using courseID and username
-            // <<<FIREBASE CALL>>>
-
-            //courseName.setText(mData.get(position).getCourseName());
-            //courseId.setText(mData.get(position).getCourseID());
-            return elementView;
+        View currentView = view;
+        if (currentView == null) {
+            currentView = mInflater.inflate(R.layout.student_course_card_layout, null);
         }
+        TextView courseName = (TextView) currentView.findViewById(R.id.course_name_textview);
+        TextView courseId = (TextView) currentView.findViewById(R.id.course_id_textview);
+        courseId.setText(mData.get(position)+" --> index");
 
+        // Make call to Firebase using courseID and username
+        // <<<FIREBASE CALL>>>
 
-        return view;
+        //courseName.setText(mData.get(position).getCourseName());
+        //courseId.setText(mData.get(position).getCourseID());
+        return currentView;
     }
 }

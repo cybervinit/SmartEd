@@ -8,7 +8,8 @@ import java.util.Date;
 
 public class Evaluation {
     private String evalName;
-    private int evalweight;
+    private double evalweight;
+    private double evalValue;
     private Date evaldate;
 
     public Evaluation(String evalName, int evalweight, Date evaldate){

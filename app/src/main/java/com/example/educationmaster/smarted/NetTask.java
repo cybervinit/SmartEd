@@ -30,7 +30,6 @@ import java.util.concurrent.ExecutionException;
 public class NetTask extends AsyncTask<ArrayList<Object>, ArrayList<Object>, ArrayList<Object>>{
 
     Student mStudent;
-    Admin mAdmin;
     private static final FirebaseDatabase mDB = FirebaseDatabase.getInstance();
     private static DatabaseReference dbRef = mDB.getReferenceFromUrl("https://smarteddb.firebaseio.com/");
     private ArrayList<Object> values;
@@ -57,9 +56,6 @@ public class NetTask extends AsyncTask<ArrayList<Object>, ArrayList<Object>, Arr
 
         } else if (taskType == 1) { // read
             for (int i = 0; i < listOfEndpaths.size(); i++) {
-                //Log.d("VINIT", "BEFORE READ");
-                //read(location, listOfEndpaths.get(i));
-                //Log.d("VINIT", "AFTER READ");
                 values.add(new NetTask2(location, listOfEndpaths.get(i)).executeRead());
             }
         }
