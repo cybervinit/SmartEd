@@ -20,6 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Path;
 
 public class MainActivity extends AppCompatActivity {
     private static final String STUDENT_DETAILS = "student-details/";
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             .build();
     private Api api = retrofit.create(Api.class);
 
-    Call<Student> post_call = api.setData("sushil", new Student("sushil", "2066", "_password", "_username"));
+
 
 
     private static final FirebaseDatabase mDB = FirebaseDatabase.getInstance();
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SignUpMainActivity.class));
+                //startActivity(new Intent(MainActivity.this, SignUpMainActivity.class));
             }
         });
 
@@ -66,17 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Login Authentication HERE <><><><><>
                 //startActivity(new Intent(MainActivity.this, StudentDashboard.class));
-                post_call.enqueue(new Callback<Student>() {
-                    @Override
-                    public void onResponse(Call<Student> call, Response<Student> response) {
-                        mUsernameEt.setText(call+"<<>>"+response.body());
-                    }
 
-                    @Override
-                    public void onFailure(Call<Student> call, Throwable t) {
-                        mUsernameEt.setText("FAIL");
-                    }
-                });
             }
 
 
